@@ -1,0 +1,26 @@
+# Node.js dependencies
+node_modules/
+
+# Package-lock file
+package-lock.json
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*.swp
+
+# Visual Studio Code settings
+.vscode/

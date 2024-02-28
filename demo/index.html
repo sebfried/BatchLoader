@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Loader Test</title>
+    <style>
+        body {
+            padding: 10vw;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <img src="img/burgerbird/10.webp"
+     data-from="600"
+     data-to="1200"
+     data-steps="100"
+     data-format="webp"
+     data-special="50,2000"
+     loading="lazy"
+     alt="Descriptive text">
+</body>
+<script src="../src/pixelLoad.js"></script>
+<script>
+    //Example usage
+    document.addEventListener('DOMContentLoaded', () => {
+        const imageLoader = new PixelLoader({
+            rootMargin: '50px',
+            transitionDuration: '3s',
+            lazyLoad: true,
+            lowQualityOnSlowNetwork: true,
+            observeNetworkChanges: true,
+            // Specify the fallbackImage path if you have one
+        });
+        // Call imageLoader.refreshImages() when dynamically adding new content
+    });
+</script>
+</html>
