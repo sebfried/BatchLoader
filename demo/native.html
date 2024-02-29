@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Native Batch Loader Experiment</title>
+    <link rel="icon" type="image/png"
+        href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+    <style>
+        body {
+            padding: 10vw;
+        }
+
+        .img-wrapper {
+            position: relative;
+            width: 100%;
+            height: auto;
+            padding-top: 100%;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .img-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        img.js-fade-in {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        img.blur {
+            filter: blur(5px);
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>AVIF</h2>
+    <div class="img-wrapper">
+        <img src="img/burgerbird/burgerbird-50.webp"  width="2000" height="2000" class="blur js-fade-in">
+        <picture>
+            <source srcset="img/burgerbird/burgerbird-2000.avif 2000w">
+            <img alt="burger" loading="lazy" class="js-fade-in" width="2000" height="2000">
+        </picture>
+    </div>
+    <h2>webp</h2>
+    <div class="img-wrapper">
+        <img src="img/burgerbird/burgerbird-1.webp" width="2000" height="2000">
+        <img src="img/burgerbird/burgerbird-50.webp"  width="2000" height="2000" class="blur js-fade-in">
+        <img
+            data-srcset="img/burgerbird/burgerbird-2000.webp 2000w, img/burgerbird/burgerbird-1000.webp 1000w, img/burgerbird/burgerbird-800.webp 800w" width="2000" height="2000">
+    </div>
+</body>
+<script>
+    function updateImageSrcSet() {
+        const images = document.querySelectorAll('img[data-srcset]');
+        images.forEach((img) => {
+            img.setAttribute('srcset', img.getAttribute('data-srcset'));
+            img.removeAttribute('data-srcset');
+        });
+    }
+    window.onload = function () {
+        setTimeout(updateImageSrcSet, 1000);
+    };
+    document.addEventListener("DOMContentLoaded", function () {
+        let images = document.querySelectorAll('img.js-fade-in');
+        images.forEach(function (image) {
+            image.onload = function () {
+                image.style.opacity = 1;
+                console.log("styled");
+            }
+        });
+    });
+</script>
+
+</html>
