@@ -29,10 +29,8 @@ class BatchLoader {
     getBaseImages() {
         try {
             const allImages = document.querySelectorAll('img[data-from][data-to][data-step]');
-
             this.log("allImages: " + allImages.length);
             this.logGroup("allImages: ", allImages);
-
             return allImages;
         } catch (error) {
             console.error("Error in getImages:", error.message);
@@ -43,7 +41,7 @@ class BatchLoader {
     getTargetWidth(img) {
         try {
             const rect = img.getBoundingClientRect();
-            const targetWidth = rect.width * window.deviceBatchRatio;
+            const targetWidth = rect.width * window.devicePixelRatio;
             this.log("targetWidth: " + targetWidth);
             return targetWidth;
         } catch (error) {
