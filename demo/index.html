@@ -4,37 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Loader Test</title>
+    <link rel="icon" type="image/png" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
     <style>
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         body {
             padding: 10vw;
         }
-        img {
+        .img-wrapper {
+            position: relative;
             width: 100%;
             height: auto;
+        }
+        .img-wrapper > img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            object-fit: cover; 
+            animation: fadeIn 1s ease-out forwards;
         }
     </style>
 </head>
 <body>
-    <img src="img/burgerbird/10.webp"
-     data-from="600"
-     data-to="1200"
-     data-steps="100"
-     data-format="webp"
-     data-special="50,2000"
-     loading="lazy"
-     alt="Descriptive text">
+    <div class="img-wrapper">
+        <img src="img/burgerbird/burgerbird-1.webp"
+        data-from="600"
+        data-to="1200"
+        data-step="100"
+        data-format="webp"
+        data-special="50,2000"
+        loading="lazy"
+        alt="Descriptive text">
+    </div>
 </body>
-<script src="../src/pixelLoad.js"></script>
+<script src="../src/pixelLoader.js"></script>
 <script>
     //Example usage
     document.addEventListener('DOMContentLoaded', () => {
         const imageLoader = new PixelLoader({
-            rootMargin: '50px',
-            transitionDuration: '3s',
-            lazyLoad: true,
-            lowQualityOnSlowNetwork: true,
-            observeNetworkChanges: true,
-            // Specify the fallbackImage path if you have one
+            log: true
         });
         // Call imageLoader.refreshImages() when dynamically adding new content
     });
