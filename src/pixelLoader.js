@@ -1,4 +1,4 @@
-class PixelLoader {
+class BatchLoader {
     constructor(options = {}) {
         this.options = {
             observer: {
@@ -43,7 +43,7 @@ class PixelLoader {
     getTargetWidth(img) {
         try {
             const rect = img.getBoundingClientRect();
-            const targetWidth = rect.width * window.devicePixelRatio;
+            const targetWidth = rect.width * window.deviceBatchRatio;
             this.log("targetWidth: " + targetWidth);
             return targetWidth;
         } catch (error) {

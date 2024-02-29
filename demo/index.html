@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Loader Test</title>
+    <title>Batch Loader Test</title>
     <link rel="icon" type="image/png" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
     <style>
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -38,11 +38,10 @@
         alt="Descriptive text">
     </div>
 </body>
-<script src="../src/pixelLoader.js"></script>
+<script src="../src/BatchLoader.js"></script>
 <script>
-    //Example usage
     document.addEventListener('DOMContentLoaded', () => {
-        const imageLoader = new PixelLoader({
+        const imageLoader = new BatchLoader({
             log: true
         });
         // Call imageLoader.refreshImages() when dynamically adding new content
