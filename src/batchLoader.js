@@ -38,14 +38,26 @@ class BatchLoader {
         }
     }
 
-    getTargetWidth(img) {
+    getTargetWidthLow(img) {
         try {
             const rect = img.getBoundingClientRect();
-            const targetWidth = rect.width * window.devicePixelRatio;
-            this.log("targetWidth: " + targetWidth);
-            return targetWidth;
+            const targetWidthLow = rect.width;
+            this.log("targetWidthLow: " + targetWidthLow);
+            return targetWidthLow;
         } catch (error) {
-            console.error("Error in getTargetWidth:", error.message);
+            console.error("Error in getTargetWidthLow:", error.message);
+            return 0;
+        }
+    }
+
+    getTargetWidthHigh(img) {
+        try {
+            const rect = img.getBoundingClientRect();
+            const targetWidthHigh = rect.width * window.devicePixelRatio;
+            this.log("targetWidthHigh: " + targetWidthHigh);
+            return targetWidthHigh;
+        } catch (error) {
+            console.error("Error in getTargetWidthHigh:", error.message);
             return 0;
         }
     }
@@ -82,7 +94,6 @@ class BatchLoader {
             return {};
         }
     }
-
 
     setupIntersectionObserver(img) {
         try {
@@ -127,7 +138,7 @@ class BatchLoader {
 
     selectOptimalImgSize(img) {
         const imgData = this.getBaseImgData(img);
-        const targetWidth = this.getTargetWidth(img);
+        const targetWidth = this.getTargetWidthLow(img);
         const optimalSize = imgData.allSizes.find(size => size >= targetWidth) || imgData.allSizes[imgData.allSizes.length - 1];
         this.log("optimalSize: " + optimalSize);
         return optimalSize;
@@ -156,7 +167,6 @@ class BatchLoader {
         const parentDiv = baseImg.parentNode;
         parentDiv.appendChild(newImg);
     }
-
 
     intersectionObserverFallback() {
         // TODO: Fallback for browsers without IntersectionObserver support
