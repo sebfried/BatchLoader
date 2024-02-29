@@ -1,6 +1,6 @@
 # Batch Loader: Responsive Image Batch Loader (Work in Progress)
 
-The `BatchLoader` JavaScript library is designed to load the optimal image sizes from directories with batch resized images.
+The `BatchLoader` JavaScript library for websites is designed to load the optimal image sizes from directories containing batch-resized images.
 
 ## Usage
 
